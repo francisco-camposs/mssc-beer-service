@@ -1,7 +1,6 @@
-package guru.springframework.msscbeerservice.web.controller;
+package guru.springframework.msscbeerservice.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import guru.springframework.msscbeerservice.service.BeerController;
 import guru.springframework.msscbeerservice.web.model.BeerDto;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +25,7 @@ class BeerControllerTest {
     @Test
     void getBeerById() throws Exception {
 
-        mockMvc.perform(get("/api/v1/beer/" + UUID.randomUUID().toString()).accept(MediaType.APPLICATION_JSON))
+        mockMvc.perform(get("/api/v1/beer/" + UUID.randomUUID()).accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
 
     }
@@ -48,7 +47,7 @@ class BeerControllerTest {
         BeerDto beerDto = BeerDto.builder().build();
         String beerDtoJson = objectMapper.writeValueAsString(beerDto);
 
-        mockMvc.perform(put("/api/v1/beer/" + UUID.randomUUID().toString())
+        mockMvc.perform(put("/api/v1/beer/" + UUID.randomUUID())
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(beerDtoJson))
                 .andExpect(status().isNoContent());
