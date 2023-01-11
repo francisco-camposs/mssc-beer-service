@@ -47,7 +47,7 @@ public class BeerLoader implements CommandLineRunner {
 
         }
 
-        log.debug("Loaded Beers" + beerRepository.count());
+        log.info("Loaded Beers" + beerRepository.count());
 
     }
 
